@@ -13,6 +13,7 @@ class Tamagotchi {
     if (this.foodInTummy > 0) {
       this.foodInTummy -= 1;
       console.log(`${this.name} says: WAHH!!! Food in Tummy: ${this.foodInTummy}`);
+      this.health -= 1;
     } else {
       console.log(`${this.name} is too hungry to cry!`);
       this.health -= 1;
@@ -24,6 +25,7 @@ class Tamagotchi {
     if (this.foodInTummy > 0) {
       this.foodInTummy -= 1;
       console.log(`${this.name} says: BLEH!!! Food in Tummy: ${this.foodInTummy}`);
+      this.health -= 1;
     } else {
       console.log(`${this.name} is too hungry to puke!`);
       this.health -= 1;
@@ -35,6 +37,7 @@ class Tamagotchi {
     if (this.restedness > 0) {
       this.restedness -= 1;
       console.log(`${this.name} has current restedness of: ${this.restedness}`);
+      this.health -= 1;
     } else {
       console.log(`${this.name} is too exhausted to yawn!`);
       this.health -= 1;
@@ -57,6 +60,12 @@ class Tamagotchi {
   }
 
   updateHTML() {
+    if (this.health <= 0) {
+      const tamagotchiDiv = document.getElementById(this.name);
+      tamagotchiDiv.innerHTML = this.name + " is Dead 💀";
+      return;
+    }
+
     const foodElement = document.getElementById(`food${this.name}`);
     if (foodElement) {
       foodElement.textContent = `Food: ${this.foodInTummy}`;

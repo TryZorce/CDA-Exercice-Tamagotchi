@@ -44,3 +44,8 @@ const tamagotchi2 = new Tamagotchi("Tama2", "Unicorn");
 
 tamagotchi1.start();
 tamagotchi2.start();
+
+setTimeout(() => {
+  tamagotchi1.stop();
+  tamagotchi2.stop();
+}, 30000);
